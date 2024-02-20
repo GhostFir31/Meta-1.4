@@ -1,6 +1,8 @@
-const servicio = requiere("./servicioDatos");
+const servicio = require("./servicioDatos");
 
-servicio.getDatos(1,3000);
-servicio.getDatos(2,500);
-servicio.getDatos(3,4000);
-servicio.getDatos(5,3500);
+(async function() {
+    await servicio.getDatos(1, 3000);
+    await servicio.getDatos(2, 500);
+    await servicio.getDatos(3, 4000);
+    await servicio.getDatos(5, 3500);
+})();

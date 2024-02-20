@@ -1,9 +1,20 @@
-let finDeTransmisionDeDatos=function(id){
-console.log("Transferencia",id,"Terminada");
-}
-let obtenDatosDeInternet=function(id,duracion){
-console.log("Proceso",id,"obtenido datos de Internet");
-setTimeout(finDeTransmisionDeDatos,duracion,id);
+let finDeTransmisionDeDatos = function(id) {
+    return new Promise(resolve => {
+        console.log("Transferencia", id, "Terminada");
+        resolve();
+    });
 }
 
-module.exports.getDatos=obtenDatosDeInternet;
+let obtenDatosDeInternet = function(id, duracion) {
+    return new Promise(resolve => {
+        console.log("Proceso", id, "obtenido datos de Internet");
+        setTimeout(() => {
+            resolve();
+        }, duracion);
+    });
+}
+
+module.exports.getDatos = async function(id, duracion) {
+    await obtenDatosDeInternet(id, duracion);
+    await finDeTransmisionDeDatos(id);
+};
